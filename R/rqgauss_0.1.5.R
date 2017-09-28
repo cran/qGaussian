@@ -2,7 +2,7 @@ rqgauss <-function(n,q=0,mu=0,sig=1,meth="Box-Muller"){
 nsam = n
 qv = q
 if(qv >= 3 || qv == 1) stop("q value must be < 3 or != 1")
-if(meth != "Quantile") if(meth != "Box-Muller") stop("invalid method")
+if(meth != "Quantile") if(meth != "Chaotic") if(meth != "Box-Muller") stop("invalid method")
 qPDF <- array(1:nsam)
 qPDF[] <-0
 if (meth == "Box-Muller"){ 
@@ -27,5 +27,6 @@ function(x,qva)
 }else{
 if (meth == "Quantile") qPDF=cqgauss(runif(nsam),qv,mu,sig) 
 }
+if (meth == "Chaotic") qPDF=Chaotic(nsam,qv,mu,sig)
 return(qPDF)
 }

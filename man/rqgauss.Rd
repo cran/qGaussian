@@ -15,7 +15,7 @@ rqgauss(n, q = 0, mu = 0, sig = 1, meth = "Box-Muller")
 
 \item{sig}{a value for q-variance.}
 
-\item{meth}{method used at ramdom generator}
+\item{meth}{method used at random generator} 
 
 %\item{x}{vector of quantiles.}
 
@@ -38,6 +38,8 @@ Defining Z=(q-1)/(3-q), the q-gaussian distribution has density wrinten as
 p(x) = (sig*Beta(alpha/2,1/2))^-1*(1+Z(x-mu)^2/sig^2)^-(1+1/Z)/2 
 
 where alpha = 1 - 1/Z when q < 1 and 1/Z when  1 < q < 3.
+
+For different methods use: meth = "Chaotic" , meth = "Quantile" and meth = "Box-Muller"
 }
 \examples{
  qv <- c(2.8,2.5,2,1.01,0,-5); nn <- 700
@@ -72,14 +74,17 @@ where alpha = 1 - 1/Z when q < 1 and 1/Z when  1 < q < 3.
 Emerson Luis de Santa Helena , Wagner Santos de Lima
 }
 \references{
+
+Umeno, K., Sato, A., IEEE Transactions on Information Theory (Volume:59,Issue:5,May 2013).Chaotic Method for Generating q-Gaussian Random Variables. 
+
 Thistleton, W.,Marsh, J. A.,Nelson, K.,Tsallis, C., (2007) IEEE Transactions on Information Theory, 53(12):4805
 
 Tsallis, C., (2009) Introduction to Nonextensive Statistical Mechanics. Springer.
 
-de Santa Helena, E. L., Nascimento, C. M., and Gerhardt, G. J., (2015) Alternative way to charecterize a
+de Santa Helena, E. L., Nascimento, C. M., and Gerhardt, G. J., (2015) Alternative way to characterize a
 q-gaussian distribution by a robust heavy tail measurement. Physica A, (435):44-50.
 
-Manuscript submitted for publication (2016) qGaussian: Tools to Explore Applications of Tsallis Statistics
+de Lima, Wagner S., de Santa Helena, E. L., qGaussian: Tools to Explore Applications of Tsallis Statistics.	arXiv:1703.06172
 }
 \seealso{
 Distributions for other standard distributions, including dt and dcauchy.
