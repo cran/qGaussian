@@ -11,40 +11,40 @@
 #' @param n number of observations. If length(n) > 1, the length is taken to be the number required.
 #' @param mu a value for q-mean.
 #' @param sig a value for q-variance. 
-pqgauss = function(x,q=0,mu=0,sig=1, lower.tail = TRUE){
-qv = q
-Z=(qv-1)/(3-qv)
+pqgauss <- function(x,q=0,mu=0,sig=1, lower.tail = TRUE){
+qv <- q
+Z<-(qv-1)/(3-qv)
 if(qv >= 3 || qv == 1) {
 stop("q value must be < 3 or != 1)")
 }else{
 if (qv < 1){
-supp=sig/sqrt(-Z)
+supp<-sig/sqrt(-Z)
 if (max(x-mu)> supp || min(x-mu) < -supp){
 stop("|x-mu| > Support")
 }}}
 #library(zipfR) # library de Rbeta
-X=1+Z/(sig^2)*(x-mu)^2
+X<-1+Z/(sig^2)*(x-mu)^2
 if (qv < 1){
-xl=X
-a = 1-1/Z 
+xl<-X
+a <- 1-1/Z 
 }else{
-a = 1/Z
-xl=1/X
+a <- 1/Z
+xl<-1/X
 }
-P = array(1:length(xl))
-for(i in 1:length(xl)){
+P <- array(seq_len(length(xl)))
+for(i in seq_len(length(xl))){
 if (lower.tail == "TRUE"){
 if(x[i]<mu){
-P[i] =Rbeta(xl[i],a/2,1/2)/2
+P[i] <-Rbeta(xl[i],a/2,1/2)/2
 }else{
-P[i] =1-Rbeta(xl[i],a/2,1/2)/2
+P[i] <-1-Rbeta(xl[i],a/2,1/2)/2
 }
 }else{
 if (lower.tail == "FALSE"){
 if(x[i]>mu){
-P[i] =Rbeta(xl[i],a/2,1/2)/2
+P[i] <-Rbeta(xl[i],a/2,1/2)/2
 }else{
-P[i] =1-Rbeta(xl[i],a/2,1/2)/2
+P[i] <-1-Rbeta(xl[i],a/2,1/2)/2
 }
 }
 }
